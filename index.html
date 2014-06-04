@@ -4,12 +4,42 @@
 #map-canvas 
 { 
 height: 100%; 
-width: 50%;
+width: 70%;
 }
+
+.body {
+    color: blue;
+}
+
+.telemetry { font-size: 50pt;
+            color:#eeeeee;
+ 			white-space: nowrap;
+			position: absolute;
+			top: 10%;
+			left: 72%;
+			}
+
+<DIV style="position: absolute; font-family: arial; font-style: italic; font-variant:small-caps;
+     font-weight:bold; text-decoration:underline; letter-spacing: 2px; top: 80px; width: 400px;
+     left: 400px; height: 25px; background-color: yellow">80 from the top and 400 from the left</DIV>
+	 
+	 
 </style>
 
+
 <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+<body bgcolor="#000000"> 
 <div id="map-canvas"></div>
+<div class='telemetry'>Altitude: 244ft<br>
+<br>
+Heading: 241&deg;<br>
+<br>
+Battery: 14.3V<br>
+<br>
+
+</div>
+</body>
 
 <!--
 <canvas id="map-canvas" width="500" height="400"
