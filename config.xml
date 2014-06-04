@@ -14,7 +14,7 @@
     </description>
 
     <author href="https://build.phonegap.com" email="support@phonegap.com">
-        rbtx99 coder 
+        rbtx99 the coder 
     </author>
 
 	<!-- <gap:platform name="ios" /> -->
@@ -23,5 +23,9 @@
 	<gap:platform name="symbian" />
 	<gap:platform name="blackberry" />
 	<gap:platform name="winphone" /> -->
+	
+	<preference name="orientation" value="landscape" />
+	<preference name="fullscreen" value="true" />
+	
 	
 </widget>
