@@ -1,26 +1,50 @@
-<!-- http://www.w3schools.com/html/html5_canvas.asp -->
+<!-- http://jsfiddle.net/ThinkingStiff/Rsp22/ -->
 
-<canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;"></canvas>
+<style> 
+#map-canvas 
+{ 
+height: 100%; 
+width: 50%;
+}
+</style>
+
+<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<div id="map-canvas"></div>
+
+<!--
+<canvas id="map-canvas" width="500" height="400"
+style="border:1px solid #000000;">
+</canvas> -->
+
 
 <script>
-var c = document.getElementById("myCanvas");
-var ctx = c.getContext("2d");
-ctx.fillStyle = "#FF0000";
-ctx.fillRect(0,0,150,75);
+function initialize() {
+    
+    var myLatLng = new google.maps.LatLng( 50, 50 ),
+        myOptions = {
+            zoom: 15,
+            center: myLatLng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+            },
+        map = new google.maps.Map( document.getElementById( 'map-canvas' ), myOptions ),
+        marker = new google.maps.Marker( {position: myLatLng, map: map} );
+    
+   marker.setMap( map );
+   moveMarker( map, marker );
+    
+}
 
-ctx.moveTo(0,0);
-ctx.lineTo(200,100);
-ctx.stroke();
+function moveMarker( map, marker ) {
+    
+    //delayed so you can see it move
+    setTimeout( function(){ 
+    
+        marker.setPosition( new google.maps.LatLng( 51.6161168, -1.2329807 ) );
+        map.panTo( new google.maps.LatLng( 51.6161168, -1.2329807 ) );
+        
+    }, 1500 );
 
-ctx.beginPath();
-ctx.arc(95,50,40,0,2*Math.PI);
-ctx.stroke();
+};
 
-ctx.font = "30px Arial";
-ctx.fillStyle = "#00FF00";
-ctx.fillText("Hello World",10,50);
-
-ctx.font = "30px Arial";
-ctx.strokeText("Hello World",10,90);
-
+initialize();
 </script>
