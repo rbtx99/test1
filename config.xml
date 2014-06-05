@@ -21,6 +21,8 @@
 	<preference name="orientation" value="landscape" />
 	<preference name="fullscreen" value="true" />
 	<icon src="icon.png" />
+	<gap:splash src="splash/ios/splash.png" gap:platform="android" />
+	
 	
 	<gap:plugin name="com.randdusing.bluetoothle" version="1.0.0" />
 	
