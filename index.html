@@ -11,7 +11,7 @@ width: 70%;
     color: blue;
 }
 
-.telemetry { font-size: 4vw;
+.telemetry { font-size: 3.5vw;
             color:#eeeeee;
  			white-space: nowrap;
 			position: absolute;
@@ -90,4 +90,13 @@ function moveMarker( map, marker ) {
 };
 
 initialize();
+
+getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+WindowManager.LayoutParams.FLAG_FULLSCREEN);
+ViewGroup view = (ViewGroup)getWindow().getDecorView();
+view.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+super.loadUrl(Config.getStartUrl());  
+
+
 </script>
