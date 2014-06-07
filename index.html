@@ -35,6 +35,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="js/cors.js" ></script>
 <script type="text/javascript" src="js/map.js" ></script>
 <script type="text/javascript" src="js/gauge.js" ></script>
 
@@ -104,9 +105,12 @@ var my_gauge_3= new gauge("gauge3", "AHOR");
 var my_gauge_4= new gauge("gauge4", "ASPD");
 var my_gauge_5= new gauge("gauge5", "VSPD");
 var my_gauge_6= new gauge("gauge6", "TURN");
-setTimeout( 'tsr()', 200);
+//setTimeout( 'tsr()', 200);
 
-setInterval(function(){housekeeping()}, 5000);
+//makeCorsRequest("http://work.spartan-rc.com/tracker/gps-position.txt");
+
+setInterval(function(){housekeeping()}, 1000);
+
 //getPage();
 
 
@@ -145,19 +149,17 @@ function housekeeping() {
 	//s= "kjdaskljlk";
 //	document.write(s);
 
+
+	// http://www.w3.org/wiki/CORS_Enabled
+	// <?php header("Access-Control-Allow-Origin: *"); include 'gps-position.txt'; ?>
 	$.ajax({
-		url : "http://work.spartan-rc.com/tracker/gps-position.txt",
+		//url : "http://work.spartan-rc.com/tracker/read.php",
+		url : "http://work.spartan-rc.com/tracker/fake.php",
 		success : function(result){
 			//alert(result);
-		//	document.write(result+"<br>");
-			var matches_array= result.match(/^([0-9-]+)\s([0-9:]+)\s([0-9.-]+)\s([0-9.-]+)/); 
+			var matches_array= result.match(/^([0-9-]+)\s([0-9:]+)\s([0-9.-]+)\s([0-9.-]+)\s([0-9.-]+)/); 
 			if(matches_array)
-			{
-	//			myfield.form.elements["RE_hub"].value= matches_array[1]; // H
-			//	document.write(matches_array[3]+"<br>");	
-				//document.write(matches_array[4]+"<br>");	
-				my_map.move(matches_array[3], matches_array[4], 90);
-			}
+				{ my_map.move(matches_array[3], matches_array[4], matches_array[5]); }
 		}
 	});
 
