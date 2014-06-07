@@ -3,7 +3,7 @@
 <style> 
 #map-canvas { position: absolute; left: 0%; top: 0%; width: 70%; height: 70%; }
 #gauge1 { position: absolute; left: 0%; top: 70%; width: 70%; height: 30%; }
-#gauge2 { position: absolute; left: 12%; top: 70%; width: 70%; height: 30%; }
+#gauge2 { position: absolute; left: 30%; top: 70%; width: 70%; height: 30%; }
   
 .body {
     color: blue;
@@ -17,15 +17,17 @@
 			left: 72%;
 			}
 
+<!--			
 <DIV style="position: absolute; font-family: arial; font-style: italic; font-variant:small-caps;
      font-weight:bold; text-decoration:underline; letter-spacing: 2px; top: 80px; width: 400px;
      left: 400px; height: 25px; background-color: yellow">80 from the top and 400 from the left</DIV>
-	 
+-->
 	 
 </style>
 
-
 <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="js/map.js" ></script>
+<script type="text/javascript" src="js/gauge.js" ></script>
 
 <body bgcolor="#000000">
 
@@ -50,8 +52,7 @@ Lon: -1.2329807
 
 <!-- <canvas id="map-canvas" width="500" height="400" style="border:1px solid #000000;"></canvas> -->
 
-<script type="text/javascript" src="js/map.js" ></script>
-<script type="text/javascript" src="js/gauge.js" ></script>
+
 
 <script type="text/javascript">
 
@@ -64,8 +65,8 @@ my_map.init();
 //my_map.move(0, 0, 90);
 my_map.flyto(1,1);
 
-var my_first_gauge= new gauge("gauge1",150);
-var my_second_gauge= new gauge("gauge2",200);
+var my_first_gauge= new gauge("gauge1", "ALTI");
+var my_second_gauge= new gauge("gauge2", "BRNG");
 
 
 //setTimeout( 'tsr()', 500);

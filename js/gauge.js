@@ -1,7 +1,8 @@
 <!-- http://www.w3schools.com/html/html5_canvas.asp -->
 
-function gauge(id,size)
+function gauge(id, pv)
 {
+	this.pv= pv;
 	// http://stackoverflow.com/questions/11816431/how-to-add-a-html5-canvas-within-a-div
 	this.canvas = document.createElement('canvas');
 	div = document.getElementById(id); 
@@ -21,14 +22,25 @@ gauge.prototype.draw = function()
 {
 	var ctx = this.canvas.getContext("2d");
 	ctx.fillStyle = "#FF0000";
-	ctx.fillRect(0, 0, this.canvas.width, this.canvas.width);	
-	ctx.moveTo(0,0);
-	ctx.lineTo(this.canvas.width, this.canvas.width);
+	//ctx.fillRect(0, 0, this.canvas.width, this.canvas.width);
+	ctx.strokeStyle="#FFFF00";
+	ctx.strokeRect(0, 0, this.canvas.width, this.canvas.width);
+	ctx.moveTo(0, 0);
+	ctx.lineTo(this.canvas.width, this.canvas.height);
+	ctx.stroke();
+	ctx.moveTo(this.canvas.width, 0);
+	ctx.lineTo(0, this.canvas.height);
 	ctx.stroke();
 	
-	//var img = new Image();
-	//img.src = "js/face.png";
-	//ctx.drawImage(img,10,10,50,50,10,10,50,50);
+	ctx.font = this.canvas.height/10 + "px Arial";
+	ctx.textAlign = 'center';
+	ctx.textBaseline="middle"; 
+	ctx.fillStyle = "#00FF00";
+	ctx.fillText(this.pv, this.canvas.width/2, this.canvas.height*0.9);
+	
+	var img = new Image();
+	img.src = "js/face.png";
+	ctx.drawImage(img,10,10,50,50,10,10,50,50);
 	//img.src = "js/dial.svg";
 	
 }	
