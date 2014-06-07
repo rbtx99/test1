@@ -90,7 +90,7 @@
 <script type="text/javascript">
 
 var th= 0;
-var r= 2000;	// Radious in meters
+var r= 100;	// Radious in meters
 
 var my_map= new navmap();
 //my_map.init();
@@ -106,10 +106,11 @@ var my_gauge_5= new gauge("gauge5", "VSPD");
 var my_gauge_6= new gauge("gauge6", "TURN");
 //setTimeout( 'tsr()', 200);
 
-setInterval(function(){housekeeping()}, 500);
+setInterval(function(){housekeeping()}, 100);
 
 function housekeeping() {
-	th+= 0.12;
+	th+= 0.1;
+	r+=1;
 	x= Math.sin(th) * r / 71693;
 	y= Math.cos(th) * r / 111230;
 	my_map.move(51.616065+y,-1.232925+x, th * 180 / Math.PI + 90);
