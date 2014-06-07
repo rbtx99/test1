@@ -1,12 +1,10 @@
 <!-- http://jsfiddle.net/ThinkingStiff/Rsp22/ -->
 
 <style> 
-#map-canvas 
-{ 
-height: 100%; 
-width: 70%;
-}
-
+#map-canvas { position: absolute; left: 0%; top: 0%; width: 70%; height: 70%; }
+#gauge1 { position: absolute; left: 0%; top: 70%; width: 70%; height: 30%; }
+#gauge2 { position: absolute; left: 12%; top: 70%; width: 70%; height: 30%; }
+  
 .body {
     color: blue;
 }
@@ -29,74 +27,92 @@ width: 70%;
 
 <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 
-<body bgcolor="#000000"> 
+<body bgcolor="#000000">
+
 <div id="map-canvas"></div>
+<div id="gauge1"></div>
+<div id="gauge2"></div>
+
+<!-- <canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;"></canvas> -->
+
+<!--
 <div class='telemetry'>Altitude: 244ft<br>
 <br>
-Heading: 241&deg;<br>
+Bearing: 241&deg;<br>
 <br>
 Battery: 14.3V<br>
 <br>
 Lat: 51.6161168<br>
 <br>
 Lon: -1.2329807
-</div>
+</div> -->
 </body>
 
-<!--
-<canvas id="map-canvas" width="500" height="400"
-style="border:1px solid #000000;">
-</canvas> -->
+<!-- <canvas id="map-canvas" width="500" height="400" style="border:1px solid #000000;"></canvas> -->
+
+<script type="text/javascript" src="js/map.js" ></script>
+<script type="text/javascript" src="js/gauge.js" ></script>
+
+<script type="text/javascript">
+
+//function tsr() {
+//}
 
 
-<script>
-function initialize() {
-    
-	  var goldStar = {
-    path: "M43.734,21c-3.631,0-15.092,0-15.092,0  S16.25,5.188,16.047,4.938s-0.422-0.594-1.125-0.672c-0.859-0.095-1.969-0.203-2.328-0.234c-0.406-0.035-0.719,0.141-0.496,0.734  C12.388,5.539,18.748,21,18.748,21H6.034c0,0-2.458-4.722-2.878-5.531C2.965,15.101,2.557,15.014,2,15H1.297  c-0.125,0-0.312,0-0.281,0.344C1.058,15.811,3,25,3,25s-1.888,9.197-1.984,9.656C0.953,34.953,1.172,35,1.297,35H2  c0.966-0.009,0.954-0.079,1.156-0.469C3.576,33.722,6.034,29,6.034,29h12.714c0,0-6.36,15.461-6.65,16.234  c-0.223,0.594,0.09,0.77,0.496,0.734c0.359-0.031,1.469-0.139,2.328-0.234c0.703-0.078,0.922-0.422,1.125-0.672S28.643,29,28.643,29  s11.461,0,15.092,0c3.766,0,5.264-3.031,5.264-4S47.484,21,43.734,21z",
-    fillColor: 'yellow',
-    fillOpacity: 0.8,
-	anchor: new google.maps.Point(20, 28),
-    scale: 1,
-	rotation: 35,
-    strokeColor: 'red',
-    strokeWeight: 2
-  };
-  
-    var myLatLng = new google.maps.LatLng( 50, 50 ),
-        myOptions = {
-            zoom: 15,
-            center: myLatLng,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-            },
-        map = new google.maps.Map( document.getElementById( 'map-canvas' ), myOptions ),
-        marker = new google.maps.Marker( {position: myLatLng, icon: goldStar, map: map} );
-    
-   marker.setMap( map );
-   moveMarker( map, marker );
-    
-}
+var my_map= new navmap();
+my_map.init();
+//my_map.move(0, 0, 90);
+my_map.flyto(1,1);
 
-function moveMarker( map, marker ) {
-    
-    //delayed so you can see it move
-    setTimeout( function(){ 
-    
-        marker.setPosition( new google.maps.LatLng( 51.6160022, -1.2329507 ) );
-        map.panTo( new google.maps.LatLng( 51.6161168, -1.2329807 ) );
-        
-    }, 1500 );
+var my_first_gauge= new gauge("gauge1",150);
+var my_second_gauge= new gauge("gauge2",200);
 
-};
 
-initialize();
+//setTimeout( 'tsr()', 500);
 
-getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
-getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-WindowManager.LayoutParams.FLAG_FULLSCREEN);
-ViewGroup view = (ViewGroup)getWindow().getDecorView();
-view.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
-super.loadUrl(Config.getStartUrl());  
+/*
+	// http://stackoverflow.com/questions/11816431/how-to-add-a-html5-canvas-within-a-div
+    function loadCanvas(id) {
+        var canvas = document.createElement('canvas');
+        div = document.getElementById(id); 
+        canvas.id     = "CursorLayer";
+        canvas.width  = div.offsetHeight;
+        canvas.height = div.offsetHeight;
+        canvas.style.zIndex   = 8;
+        canvas.style.position = "absolute";
+        canvas.style.border   = "0px solid";
+        div.appendChild(canvas);
+		
+
+	}
+	
+	loadCanvas("gauge-canvas");*/
+
+
+/*
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+ctx.fillStyle = "#FF0000";
+ctx.fillRect(0,0,150,75);
+
+ctx.moveTo(0,0);
+ctx.lineTo(200,100);
+ctx.stroke();
+
+ctx.beginPath();
+ctx.arc(95,50,40,0,2*Math.PI);
+ctx.stroke();
+
+ctx.font = "30px Arial";
+ctx.fillStyle = "#00FF00";
+ctx.fillText("Hello World",10,50);
+
+ctx.font = "30px Arial";
+ctx.strokeText("Hello World",10,90);
+	*/
+
+
+
 
 
 </script>
