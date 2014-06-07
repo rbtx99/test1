@@ -32,11 +32,13 @@
 }
 </style>
 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
 <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 <script type="text/javascript" src="js/map.js" ></script>
 <script type="text/javascript" src="js/gauge.js" ></script>
 
-<body bgcolor="#000000">
+<body bgcolor="#888888">
 
 <div id="map-canvas"></div>
 <div id="gauge1"></div>
@@ -92,32 +94,62 @@
 var th= 0;
 var r= 100;	// Radious in meters
 
-var my_map= new navmap();
-//my_map.init();
+//var my_map= new navmap();
 //my_map.move(0, 0, 90);
-//my_map.flyto(1,1);
 //my_map.flyto(51.616065,-1.232925);
 
-var my_gauge_1= new gauge("gauge1", "ALTI");
-var my_gauge_2= new gauge("gauge2", "BRNG");
-var my_gauge_3= new gauge("gauge3", "AHOR");
-var my_gauge_4= new gauge("gauge4", "ASPD");
-var my_gauge_5= new gauge("gauge5", "VSPD");
-var my_gauge_6= new gauge("gauge6", "TURN");
+//var my_gauge_1= new gauge("gauge1", "ALTI");
+//var my_gauge_2= new gauge("gauge2", "BRNG");
+//var my_gauge_3= new gauge("gauge3", "AHOR");
+//var my_gauge_4= new gauge("gauge4", "ASPD");
+//var my_gauge_5= new gauge("gauge5", "VSPD");
+//var my_gauge_6= new gauge("gauge6", "TURN");
 //setTimeout( 'tsr()', 200);
 
-setInterval(function(){housekeeping()}, 100);
+setInterval(function(){housekeeping()}, 1000);
+//getPage();
 
+$.ajax({
+    url : "http://work.spartan-rc.com/tracker/gps-position.txt",
+    success : function(result){
+        //alert(result);
+		document.write(result);
+    }
+});
+
+
+
+/****************************************************************************************/
+/*
+function httpGet(theUrl)
+{
+    var xmlHttp = null;
+
+    xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false );
+    xmlHttp.send( null );
+    return xmlHttp.responseText;
+}*/
+
+/****************************************************************************************/
+function getPage() {
+
+
+
+}
+
+/****************************************************************************************/
 function housekeeping() {
-	th+= 0.1;
-	r+=1;
-	x= Math.sin(th) * r / 71693;
-	y= Math.cos(th) * r / 111230;
-	my_map.move(51.616065+y,-1.232925+x, th * 180 / Math.PI + 90);
-	//my_map.flyto(51.616065+y,-1.232925+x);
-
-
-
+	// Fly in circles
+	//th+= 0.1;
+	//r+=1;
+	//x= Math.sin(th) * r / 71693;
+	//y= Math.cos(th) * r / 111230;
+	//my_map.move(51.616065+y,-1.232925+x, th * 180 / Math.PI + 90);
+	
+//	var s= httpGet("http://work.spartan-rc.com/tracker/gps-position.txt");
+	//s= "kjdaskljlk";
+//	document.write(s);
 }
 
 
