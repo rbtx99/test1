@@ -90,13 +90,13 @@
 <script type="text/javascript">
 
 var th= 0;
-var r= 0.01;
+var r= 2000;	// Radious in meters
 
 var my_map= new navmap();
 //my_map.init();
 //my_map.move(0, 0, 90);
-my_map.flyto(1,1);
-my_map.flyto(51.616065,-1.232925);
+//my_map.flyto(1,1);
+//my_map.flyto(51.616065,-1.232925);
 
 var my_gauge_1= new gauge("gauge1", "ALTI");
 var my_gauge_2= new gauge("gauge2", "BRNG");
@@ -106,12 +106,12 @@ var my_gauge_5= new gauge("gauge5", "VSPD");
 var my_gauge_6= new gauge("gauge6", "TURN");
 //setTimeout( 'tsr()', 200);
 
-setInterval(function(){housekeeping()}, 200);
+setInterval(function(){housekeeping()}, 500);
 
 function housekeeping() {
-	th+= 0.25/2;
-	x= Math.sin(th) * r;
-	y= Math.cos(th) * r;
+	th+= 0.12;
+	x= Math.sin(th) * r / 71693;
+	y= Math.cos(th) * r / 111230;
 	my_map.move(51.616065+y,-1.232925+x, th * 180 / Math.PI + 90);
 	//my_map.flyto(51.616065+y,-1.232925+x);
 
