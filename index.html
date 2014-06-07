@@ -4,10 +4,6 @@
 #map-canvas { position: absolute; left: 0%; top: 0%; width: 70%; height: 70%; }
 #gauge1 { position: absolute; left: 0%; top: 70%; width: 70%; height: 30%; }
 #gauge2 { position: absolute; left: 30%; top: 70%; width: 70%; height: 30%; }
-  
-.body {
-    color: blue;
-}
 
 .telemetry { font-size: 3.5vw;
             color:#eeeeee;
@@ -17,12 +13,11 @@
 			left: 72%;
 			}
 
-<!--			
-<DIV style="position: absolute; font-family: arial; font-style: italic; font-variant:small-caps;
-     font-weight:bold; text-decoration:underline; letter-spacing: 2px; top: 80px; width: 400px;
-     left: 400px; height: 25px; background-color: yellow">80 from the top and 400 from the left</DIV>
--->
-	 
+.body {
+    color: blue;
+}
+
+			
 </style>
 
 <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
@@ -30,24 +25,10 @@
 <script type="text/javascript" src="js/gauge.js" ></script>
 
 <body bgcolor="#000000">
-
 <div id="map-canvas"></div>
 <div id="gauge1"></div>
 <div id="gauge2"></div>
-
-<!-- <canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;"></canvas> -->
-
-<!--
-<div class='telemetry'>Altitude: 244ft<br>
-<br>
-Bearing: 241&deg;<br>
-<br>
-Battery: 14.3V<br>
-<br>
-Lat: 51.6161168<br>
-<br>
-Lon: -1.2329807
-</div> -->
+<div class='telemetry'>Altitude: 244ft<br><br>Bearing: 241&deg;<br><br>Battery: 14.3V<br><br>Lat: 51.6161168<br><br>Lon: -1.2329807</div>
 </body>
 
 <!-- <canvas id="map-canvas" width="500" height="400" style="border:1px solid #000000;"></canvas> -->
@@ -68,52 +49,6 @@ my_map.flyto(1,1);
 var my_first_gauge= new gauge("gauge1", "ALTI");
 var my_second_gauge= new gauge("gauge2", "BRNG");
 
-
 //setTimeout( 'tsr()', 500);
-
-/*
-	// http://stackoverflow.com/questions/11816431/how-to-add-a-html5-canvas-within-a-div
-    function loadCanvas(id) {
-        var canvas = document.createElement('canvas');
-        div = document.getElementById(id); 
-        canvas.id     = "CursorLayer";
-        canvas.width  = div.offsetHeight;
-        canvas.height = div.offsetHeight;
-        canvas.style.zIndex   = 8;
-        canvas.style.position = "absolute";
-        canvas.style.border   = "0px solid";
-        div.appendChild(canvas);
-		
-
-	}
-	
-	loadCanvas("gauge-canvas");*/
-
-
-/*
-var c = document.getElementById("myCanvas");
-var ctx = c.getContext("2d");
-ctx.fillStyle = "#FF0000";
-ctx.fillRect(0,0,150,75);
-
-ctx.moveTo(0,0);
-ctx.lineTo(200,100);
-ctx.stroke();
-
-ctx.beginPath();
-ctx.arc(95,50,40,0,2*Math.PI);
-ctx.stroke();
-
-ctx.font = "30px Arial";
-ctx.fillStyle = "#00FF00";
-ctx.fillText("Hello World",10,50);
-
-ctx.font = "30px Arial";
-ctx.strokeText("Hello World",10,90);
-	*/
-
-
-
-
 
 </script>
