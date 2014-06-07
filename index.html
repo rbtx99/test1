@@ -1,11 +1,25 @@
 <!-- http://jsfiddle.net/ThinkingStiff/Rsp22/ -->
 
 <style> 
-#map-canvas { position: absolute; left: 0%; top: 0%; width: 70%; height: 70%; }
-#gauge1 { position: absolute; left: 0%; top: 70%; width: 70%; height: 30%; }
-#gauge2 { position: absolute; left: 25%; top: 70%; width: 70%; height: 30%; }
-#gauge3 { position: absolute; left: 50%; top: 70%; width: 70%; height: 30%; }
-#gauge4 { position: absolute; left: 75%; top: 70%; width: 70%; height: 30%; }
+<!--
+#map-canvas { position: absolute; left: 0%; top: 0%; width: 70%; height: 100%; }
+#gauge1 { position: absolute; left: 70%; top: 0%; width: 15%; height: 15%; }
+#gauge2 { position: absolute; left: 85%; top: 0%; width: 15%; height: 15%; }
+#gauge3 { position: absolute; left: 70%; top: 30%; width: 15%; height: 15%; }
+#gauge4 { position: absolute; left: 85%; top: 30%; width: 15%; height: 15%; }
+#gauge5 { position: absolute; left: 70%; top: 60%; width: 15%; height: 15%; }
+#gauge6 { position: absolute; left: 85%; top: 60%; width: 15%; height: 15%; }
+-->
+
+#map-canvas { width: 70%; height: 100%; }
+#gauge1 { width: 15%; height: 15%; }
+#gauge2 { width: 15%; height: 15%; }
+#gauge3 { width: 15%; height: 15%; }
+#gauge4 { width: 15%; height: 15%; }
+#gauge5 { width: 15%; height: 15%; }
+#gauge6 { width: 15%; height: 15%; }
+#gauge7 { width: 15%; height: 15%; }
+#gauge8 { width: 15%; height: 15%; }
 
 .telemetry { font-size: 3.5vw;
             color:#eeeeee;
@@ -25,12 +39,56 @@
 <script type="text/javascript" src="js/gauge.js" ></script>
 
 <body bgcolor="#000000">
+
 <div id="map-canvas"></div>
 <div id="gauge1"></div>
 <div id="gauge2"></div>
 <div id="gauge3"></div>
 <div id="gauge4"></div>
-<div class='telemetry'>Altitude: 244ft<br><br>Bearing: 241&deg;<br><br>Battery: 14.3V<br><br>Lat: 51.6161168<br><br>Lon: -1.2329807</div>
+<div id="gauge5"></div>
+<div id="gauge6"></div>
+<div id="gauge7"></div>
+<div id="gauge8"></div>
+
+
+<!-- <div class='telemetry'>Altitude: 244ft<br><br>Bearing: 241&deg;<br><br>Battery: 14.3V<br><br>Lat: 51.6161168<br><br>Lon: -1.2329807</div> -->
+
+<!--
+<table style="border: 5px solid white;">
+	<tr>
+		<td rowspan="5">
+			<div id="map-canvas"></div>
+		</td>
+		<td>
+			<div id="gauge1"></div>
+			<div id="gauge2"></div>
+		</td>
+	<tr>
+	
+	<tr>
+		<td>
+			<div id="gauge3"></div>
+			<div id="gauge4"></div>
+		</td>
+	</tr>	
+
+	
+	<tr>
+		<td>
+			<div id="gauge5"></div>
+			<div id="gauge6"></div>
+		</td>
+	</tr>	
+	
+	<tr>
+		<td>
+			<div id="gauge7"></div>
+			<div id="gauge8"></div>
+		</td>
+	</tr>	
+	
+</table>-->
+
 </body>
 
 <script type="text/javascript">
@@ -44,11 +102,14 @@ my_map.init();
 //my_map.move(0, 0, 90);
 my_map.flyto(1,1);
 
-var my_first_gauge= new gauge("gauge1", "ALTI");
-var my_second_gauge= new gauge("gauge2", "BRNG");
-var my_second_gauge= new gauge("gauge3", "AHOR");
-var my_second_gauge= new gauge("gauge4", "ASPD");
-
+var my_gauge_1= new gauge("gauge1", "ALTI");
+var my_gauge_2= new gauge("gauge2", "BRNG");
+var my_gauge_3= new gauge("gauge3", "AHOR");
+var my_gauge_4= new gauge("gauge4", "ASPD");
+var my_gauge_5= new gauge("gauge5", "VSPD");
+var my_gauge_6= new gauge("gauge6", "TURN");
+var my_gauge_7= new gauge("gauge7", "VSPD");
+var my_gauge_8= new gauge("gauge8", "TURN");
 //setTimeout( 'tsr()', 500);
 
 </script>

@@ -7,8 +7,8 @@ function gauge(id, pv)
 	this.canvas = document.createElement('canvas');
 	div = document.getElementById(id); 
 	this.canvas.id     = "CursorLayer";
-	this.canvas.width  = div.offsetHeight;
-	this.canvas.height = div.offsetHeight;
+	this.canvas.width  = div.offsetWidth;
+	this.canvas.height = div.offsetWidth;
 	this.canvas.style.zIndex   = 8;
 	//this.canvas.style.position = "absolute";
 	this.canvas.style.border   = "0px solid";
