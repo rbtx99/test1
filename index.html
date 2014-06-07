@@ -18,8 +18,6 @@
 .body {
     color: blue;
 }
-
-			
 </style>
 
 <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
@@ -35,10 +33,6 @@
 <div class='telemetry'>Altitude: 244ft<br><br>Bearing: 241&deg;<br><br>Battery: 14.3V<br><br>Lat: 51.6161168<br><br>Lon: -1.2329807</div>
 </body>
 
-<!-- <canvas id="map-canvas" width="500" height="400" style="border:1px solid #000000;"></canvas> -->
-
-
-
 <script type="text/javascript">
 
 //function tsr() {
@@ -53,7 +47,7 @@ my_map.flyto(1,1);
 var my_first_gauge= new gauge("gauge1", "ALTI");
 var my_second_gauge= new gauge("gauge2", "BRNG");
 var my_second_gauge= new gauge("gauge3", "AHOR");
-var my_second_gauge= new gauge("gauge4", "FUEL");
+var my_second_gauge= new gauge("gauge4", "ASPD");
 
 //setTimeout( 'tsr()', 500);
 
