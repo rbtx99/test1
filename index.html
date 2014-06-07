@@ -11,15 +11,13 @@
 #gauge6 { position: absolute; left: 85%; top: 60%; width: 15%; height: 15%; }
 -->
 
-#map-canvas { width: 70%; height: 100%; }
-#gauge1 { width: 15%; height: 15%; }
-#gauge2 { width: 15%; height: 15%; }
-#gauge3 { width: 15%; height: 15%; }
-#gauge4 { width: 15%; height: 15%; }
-#gauge5 { width: 15%; height: 15%; }
-#gauge6 { width: 15%; height: 15%; }
-#gauge7 { width: 15%; height: 15%; }
-#gauge8 { width: 15%; height: 15%; }
+#map-canvas { width: 64%; height: 100%; }
+#gauge1 { position: absolute; left: 64%; top: 0%; width: 18%; height: 33%; }
+#gauge2 { position: absolute; left: 82%; top: 0%; width: 18%; height: 33%; }
+#gauge3 { position: absolute; left: 64%; top: 33%; width: 18%; height: 33%; }
+#gauge4 { position: absolute; left: 82%; top: 33%; width: 18%; height: 33%; }
+#gauge5 { position: absolute; left: 64%; top: 66%; width: 18%; height: 33%; }
+#gauge6 { position: absolute; left: 82%; top: 66%; width: 18%; height: 33%; }
 
 .telemetry { font-size: 3.5vw;
             color:#eeeeee;
@@ -47,8 +45,6 @@
 <div id="gauge4"></div>
 <div id="gauge5"></div>
 <div id="gauge6"></div>
-<div id="gauge7"></div>
-<div id="gauge8"></div>
 
 
 <!-- <div class='telemetry'>Altitude: 244ft<br><br>Bearing: 241&deg;<br><br>Battery: 14.3V<br><br>Lat: 51.6161168<br><br>Lon: -1.2329807</div> -->
@@ -108,8 +104,6 @@ var my_gauge_3= new gauge("gauge3", "AHOR");
 var my_gauge_4= new gauge("gauge4", "ASPD");
 var my_gauge_5= new gauge("gauge5", "VSPD");
 var my_gauge_6= new gauge("gauge6", "TURN");
-var my_gauge_7= new gauge("gauge7", "VSPD");
-var my_gauge_8= new gauge("gauge8", "TURN");
 //setTimeout( 'tsr()', 500);
 
 </script>
