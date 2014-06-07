@@ -94,28 +94,22 @@
 var th= 0;
 var r= 100;	// Radious in meters
 
-//var my_map= new navmap();
+var my_map= new navmap();
 //my_map.move(0, 0, 90);
 //my_map.flyto(51.616065,-1.232925);
 
-//var my_gauge_1= new gauge("gauge1", "ALTI");
-//var my_gauge_2= new gauge("gauge2", "BRNG");
-//var my_gauge_3= new gauge("gauge3", "AHOR");
-//var my_gauge_4= new gauge("gauge4", "ASPD");
-//var my_gauge_5= new gauge("gauge5", "VSPD");
-//var my_gauge_6= new gauge("gauge6", "TURN");
-//setTimeout( 'tsr()', 200);
+var my_gauge_1= new gauge("gauge1", "ALTI");
+var my_gauge_2= new gauge("gauge2", "BRNG");
+var my_gauge_3= new gauge("gauge3", "AHOR");
+var my_gauge_4= new gauge("gauge4", "ASPD");
+var my_gauge_5= new gauge("gauge5", "VSPD");
+var my_gauge_6= new gauge("gauge6", "TURN");
+setTimeout( 'tsr()', 200);
 
-setInterval(function(){housekeeping()}, 1000);
+setInterval(function(){housekeeping()}, 5000);
 //getPage();
 
-$.ajax({
-    url : "http://work.spartan-rc.com/tracker/gps-position.txt",
-    success : function(result){
-        //alert(result);
-		document.write(result);
-    }
-});
+
 
 
 
@@ -150,6 +144,23 @@ function housekeeping() {
 //	var s= httpGet("http://work.spartan-rc.com/tracker/gps-position.txt");
 	//s= "kjdaskljlk";
 //	document.write(s);
+
+	$.ajax({
+		url : "http://work.spartan-rc.com/tracker/gps-position.txt",
+		success : function(result){
+			//alert(result);
+		//	document.write(result+"<br>");
+			var matches_array= result.match(/^([0-9-]+)\s([0-9:]+)\s([0-9.-]+)\s([0-9.-]+)/); 
+			if(matches_array)
+			{
+	//			myfield.form.elements["RE_hub"].value= matches_array[1]; // H
+			//	document.write(matches_array[3]+"<br>");	
+				//document.write(matches_array[4]+"<br>");	
+				my_map.move(matches_array[3], matches_array[4], 90);
+			}
+		}
+	});
+
 }
 
 
