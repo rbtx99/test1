@@ -3,13 +3,15 @@
 <style> 
 #map-canvas { position: absolute; left: 0%; top: 0%; width: 70%; height: 70%; }
 #gauge1 { position: absolute; left: 0%; top: 70%; width: 70%; height: 30%; }
-#gauge2 { position: absolute; left: 30%; top: 70%; width: 70%; height: 30%; }
+#gauge2 { position: absolute; left: 25%; top: 70%; width: 70%; height: 30%; }
+#gauge3 { position: absolute; left: 50%; top: 70%; width: 70%; height: 30%; }
+#gauge4 { position: absolute; left: 75%; top: 70%; width: 70%; height: 30%; }
 
 .telemetry { font-size: 3.5vw;
             color:#eeeeee;
  			white-space: nowrap;
 			position: absolute;
-			top: 10%;
+			top: 0%;
 			left: 72%;
 			}
 
@@ -28,6 +30,8 @@
 <div id="map-canvas"></div>
 <div id="gauge1"></div>
 <div id="gauge2"></div>
+<div id="gauge3"></div>
+<div id="gauge4"></div>
 <div class='telemetry'>Altitude: 244ft<br><br>Bearing: 241&deg;<br><br>Battery: 14.3V<br><br>Lat: 51.6161168<br><br>Lon: -1.2329807</div>
 </body>
 
@@ -48,6 +52,8 @@ my_map.flyto(1,1);
 
 var my_first_gauge= new gauge("gauge1", "ALTI");
 var my_second_gauge= new gauge("gauge2", "BRNG");
+var my_second_gauge= new gauge("gauge3", "AHOR");
+var my_second_gauge= new gauge("gauge4", "FUEL");
 
 //setTimeout( 'tsr()', 500);
 
