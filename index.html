@@ -35,9 +35,10 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-<script type="text/javascript" src="js/cors.js" ></script>
+<!-- <script type="text/javascript" src="js/cors.js" ></script>		<!-- ????? -->
 <script type="text/javascript" src="js/map.js" ></script>
 <script type="text/javascript" src="js/gauge.js" ></script>
+<script type="text/javascript" src="js/websockets.js" ></script>
 
 <body bgcolor="#888888">
 
@@ -105,15 +106,14 @@ var my_gauge_3= new gauge("gauge3", "AHOR");
 var my_gauge_4= new gauge("gauge4", "ASPD");
 var my_gauge_5= new gauge("gauge5", "VSPD");
 var my_gauge_6= new gauge("gauge6", "TURN");
+
 //setTimeout( 'tsr()', 200);
-
 //makeCorsRequest("http://work.spartan-rc.com/tracker/gps-position.txt");
-
-setInterval(function(){housekeeping()}, 1000);
-
 //getPage();
 
 
+//setInterval(function(){housekeeping()}, 1000);
+ startWebSocket();
 
 
 
