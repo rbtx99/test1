@@ -7,8 +7,8 @@
 
     <!-- versionCode is optional and Android only -->
 
-    <name>Concept Radio</name>
-    <description>Javascript Implementation of RC radio system.</description>
+    <name>Flight Deck</name>
+    <description>Javascript based flight deck for RC.</description>
     <author href="https://build.phonegap.com" email="support@phonegap.com">rbtx99 the coder</author>
 
 	<!-- <gap:platform name="ios" /> -->
