@@ -1,5 +1,5 @@
-//var wsUri = "ws://192.168.1.22:8080/";
-var wsUri = "ws://127.0.0.1:8080/";
+var wsUri = "ws://192.168.1.22:8080/";
+//var wsUri = "ws://127.0.0.1:8080/";
 
 /****************************************************************************************
 *
@@ -20,7 +20,7 @@ function startWebSocket()
 function onOpen(evt)
 {
 	//writeToScreen("CONNECTED");
-	websocket.send("DD");			// Passkey to activate USB accessory
+	//websocket.send("DD");			// Passkey to activate USB accessory
 }
 
 /****************************************************************************************
