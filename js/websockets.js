@@ -20,7 +20,7 @@ function startWebSocket()
 function onOpen(evt)
 {
 	//writeToScreen("CONNECTED");
-	//websocket.send("DD");			// Passkey to activate USB accessory
+	websocket.send("DD");			// Passkey to activate USB accessory
 }
 
 /****************************************************************************************
@@ -43,7 +43,15 @@ function onMessage(evt)
 	var bufView = new Uint8Array(evt.data);
 	//document.write(UInt8ArrayToString(bufView));
 	if(bufView[0]==67)
-		my_map.move(51.616065,-1.232925, bufView[1]*180/100  );
+	{
+		var r= 500;	// In meters
+		var th= bufView[1]*2*Math.PI/100;		// From 0 to 2*pi
+		var x= Math.sin(th) * r / 71693;
+		var y= Math.cos(th) * r / 111230;
+		my_map.move(51.616065+y,-1.232925+x, th * 180 / Math.PI + 90);
+		//my_map.move(51.616065,-1.232925, bufView[1]*180/100  );
+	}
+		
 }
 
 /****************************************************************************************
